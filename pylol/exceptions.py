@@ -6,11 +6,30 @@ class PylolException(Exception):
 
 class APIFailure(PylolException):
     '''Thrown when an API request returns success = false'''
-    pass
+
+    def __init__(self, msg, path, url):
+        self.msg = msg
+        self.path = path
+        self.url = url
+
+class APIInvalidData(PylolException):
+    '''Thrown when the API returns invalid/corrupted JSON data'''
+
+    def __init__(self, data):
+        self.msg = u'API returned invalid JSON data.'
+        self.data = data
+
+class APISummonerNotFound(PylolException):
+    '''Thrown when requesting info on a summoner that doesn't exist'''
+
+    def __init__(self, name, region):
+        self.msg = u'"%s" not found on %s server.' % (name, region.upper())
+        self.name = name
+        self.region = region
 
 class InvalidRegion(PylolException):
     '''Thrown when an invalid region is specified during an API query'''
 
     def __init__(self, region):
-        self.message = u'%s is not a valid region.' % region
+        self.msg = u'%s is not a valid region.' % region
         self.region = region
