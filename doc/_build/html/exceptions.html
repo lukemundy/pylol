@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exceptions &mdash; Pylol 0.1dev documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pylol 0.1dev documentation" href="index.html" />
+    <link rel="prev" title="Api Object" href="api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Api Object"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Pylol 0.1dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pylol.exceptions">
+<span id="exceptions"></span><h1>Exceptions<a class="headerlink" href="#module-pylol.exceptions" title="Permalink to this headline">¶</a></h1>
+<dl class="exception">
+<dt id="pylol.exceptions.APIFailure">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APIFailure</tt><big>(</big><em>msg</em>, <em>path</em>, <em>url</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APIFailure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APIFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when an API request returns success = false</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.APIInvalidData">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APIInvalidData</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APIInvalidData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APIInvalidData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when the API returns invalid/corrupted JSON data</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.APIInvalidRegion">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APIInvalidRegion</tt><big>(</big><em>region</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APIInvalidRegion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APIInvalidRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when an invalid region is specified during an API query</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.APISummonerIDNotFound">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APISummonerIDNotFound</tt><big>(</big><em>sid</em>, <em>region</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APISummonerIDNotFound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APISummonerIDNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when requesting info on a summoner ID that doesn&#8217;t exist</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.APISummonerNotFound">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APISummonerNotFound</tt><big>(</big><em>name</em>, <em>region</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APISummonerNotFound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APISummonerNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when requesting info on a summoner that doesn&#8217;t exist</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.APISummonerNotInTeams">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">APISummonerNotInTeams</tt><big>(</big><em>sid</em>, <em>region</em><big>)</big><a class="reference internal" href="_modules/pylol/exceptions.html#APISummonerNotInTeams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.APISummonerNotInTeams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown when requesting team info on a summoner that isn&#8217;t part of any
+teams</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="pylol.exceptions.PylolException">
+<em class="property">exception </em><tt class="descclassname">pylol.exceptions.</tt><tt class="descname">PylolException</tt><a class="reference internal" href="_modules/pylol/exceptions.html#PylolException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.exceptions.PylolException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all exceptions generated by PyLoL</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">Api Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/exceptions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Api Object"
+             >previous</a> |</li>
+        <li><a href="index.html">Pylol 0.1dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luke Mundy.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

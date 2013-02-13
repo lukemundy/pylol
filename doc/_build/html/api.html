@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Api Object &mdash; Pylol 0.1dev documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pylol 0.1dev documentation" href="index.html" />
+    <link rel="next" title="Exceptions" href="exceptions.html" />
+    <link rel="prev" title="Pylol Tutorial" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="exceptions.html" title="Exceptions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Pylol Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Pylol 0.1dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-object">
+<h1>Api Object<a class="headerlink" href="#api-object" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pylol.api.Api">
+<em class="property">class </em><tt class="descclassname">pylol.api.</tt><tt class="descname">Api</tt><big>(</big><em>key</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper class for pulling data from the <a class="reference external" href="http://elophant.com/developers/docs">Elophant API</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; API developer key.</td>
+</tr>
+</tbody>
+</table>
+<p>If you do not yet have a developer key to access the API you can
+request a new one from <a class="reference external" href="http://elophant.com/developers/new">http://elophant.com/developers/new</a>.</p>
+<dl class="method">
+<dt id="pylol.api.Api.get_champions">
+<tt class="descname">get_champions</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_champions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_champions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name and ID of all champions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_find_team">
+<tt class="descname">get_find_team</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_find_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_find_team" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on the requested team</p>
+<p>Arguments:
+name &#8211; Name or tag of the team to search for.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_in_progress_game_info">
+<tt class="descname">get_in_progress_game_info</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_in_progress_game_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_in_progress_game_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns player info, picks, bans and observer info for the game
+the specified summoner is currently in (if any).</p>
+<p>Arguments:
+name &#8211; Name of the summoner to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_items">
+<tt class="descname">get_items</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data on all in game items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_leagues">
+<tt class="descname">get_leagues</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_leagues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_leagues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on each league the summoner is currently in</p>
+<p>Arguments:
+sid &#8211; ID of the summoner to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_mastery_pages">
+<tt class="descname">get_mastery_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_mastery_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_mastery_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all of a Summoner&#8217;s mastery pages</p>
+<p>Arguments:
+sid &#8211; ID of the summoner to look up (returned from get_summoner()).
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_ranked_stats">
+<tt class="descname">get_ranked_stats</tt><big>(</big><em>aid</em>, <em>season=None</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_ranked_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_ranked_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all information and stats from a Summoner&#8217;s last 10 games</p>
+<p>Arguments:
+aid &#8211; Account ID (not summoner ID) of the summoner to look up.
+season &#8211; Which season to get stats for (&#8216;one&#8217;, &#8216;two&#8217; or &#8216;current&#8217;)
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_recent_games">
+<tt class="descname">get_recent_games</tt><big>(</big><em>aid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_recent_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_recent_games" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all information and stats from a Summoner&#8217;s last 10 games</p>
+<p>Arguments:
+aid &#8211; Account ID (not summoner ID) of the summoner to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_rune_pages">
+<tt class="descname">get_rune_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_rune_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_rune_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all of a Summoner&#8217;s rune pages</p>
+<p>Arguments:
+sid &#8211; ID of the summoner to look up (returned from get_summoner()).
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner">
+<tt class="descname">get_summoner</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name, icon, ID and level of the specified summoner</p>
+<p>Arguments:
+name &#8211; Display name of the summoner to look for.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner_names">
+<tt class="descname">get_summoner_names</tt><big>(</big><em>sids</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the names of each summoner</p>
+<p>Arguments:
+sids &#8211; A list of summoner IDs to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner_team_info">
+<tt class="descname">get_summoner_team_info</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_team_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_team_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on each team the summoner is currently in</p>
+<p>Arguments:
+sid &#8211; ID of the summoner to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_team">
+<tt class="descname">get_team</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on the requested team</p>
+<p>Arguments:
+tid &#8211; teamId of the team to look up.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_team_end_of_game_stats">
+<tt class="descname">get_team_end_of_game_stats</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team_end_of_game_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team_end_of_game_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stats of each player in the specified team</p>
+<p>Arguments:
+tid &#8211; Team ID of the team to return stats for.
+region &#8211; Which region to search in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.request">
+<tt class="descname">request</tt><big>(</big><em>path</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request to the Elophant API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Path to the desired API resource.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to query.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict containing the decoded JSON returned from the API.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Makes an API request to the given path and returns the decoded JSON as
+a dictionary.</p>
+<p><em>path</em> will have any leading or trailing slash stripped before the
+request is made, so you should not include them if you can avoid it.</p>
+<p><em>region</em> should be one of <tt class="docutils literal"><span class="pre">NA</span></tt> for North America, <tt class="docutils literal"><span class="pre">EUW</span></tt> for Europe
+West, <tt class="docutils literal"><span class="pre">EUNE</span></tt> for Europe North East and <tt class="docutils literal"><span class="pre">BR</span></tt> for Brazil. If <em>region</em>
+is omitted or <tt class="docutils literal"><span class="pre">None</span></tt> is supplied it will default to <tt class="docutils literal"><span class="pre">NA</span></tt>. Upper or
+lower case strings can be passed as <em>path</em> is not case-sensitive.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Pylol Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="exceptions.html"
+                        title="next chapter">Exceptions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="exceptions.html" title="Exceptions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Pylol Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">Pylol 0.1dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Luke Mundy.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
