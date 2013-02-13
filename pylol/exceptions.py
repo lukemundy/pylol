@@ -44,7 +44,7 @@ class APISummonerNotInTeams(PylolException):
         self.sid = sid
         self.region = region
 
-class InvalidRegion(PylolException):
+class APIInvalidRegion(PylolException):
     '''Thrown when an invalid region is specified during an API query'''
 
     def __init__(self, region):

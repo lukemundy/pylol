@@ -3,10 +3,11 @@ import urllib2
 import re
 import simplejson as json
 
-from .exceptions import APIFailure, InvalidRegion
+from .exceptions import APIFailure, APIInvalidRegion
 
 class Api(object):
-    '''Object for accessing data from api.elophant.com'''
+    '''A wrapper class for pulling data from the `Elophant API
+    <http://elophant.com/developers/docs>`_.'''
 
     # Public vars
     key          = u''  # Elophant API key
@@ -17,27 +18,42 @@ class Api(object):
     _regions = (u'na', u'euw', u'eune', u'br') # API region names
 
     def __init__(self, key):
-        '''Class constructor
-
-        Arguments:
-        key -- Elophant access key (get a key elophant.com/developers/new)
         '''
+        :type key: string
+        :param key: API developer key.
+
+        If you do not yet have a developer key to access the API you can
+        request a new one from http://elophant.com/developers/new.'''
 
         self.key = unicode(key)
 
     def request(self, path, region = None):
-        '''Makes a request to the API
+        '''Send a request to the Elophant API.
 
-        Arguments:
-        path -- Path to the desired API resource
-        region -- Which region to query
-        '''
+        :type path: string
+        :param path: Path to the desired API resource.
+
+        :type region: string
+        :param region: Which game region to query.
+
+        :returns: A dict containing the decoded JSON returned from the API.
+
+        Makes an API request to the given path and returns the decoded JSON as
+        a dictionary.
+
+        *path* will have any leading or trailing slash stripped before the
+        request is made, so you should not include them if you can avoid it.
+
+        *region* should be one of ``NA`` for North America, ``EUW`` for Europe
+        West, ``EUNE`` for Europe North East and ``BR`` for Brazil. If *region*
+        is omitted or ``None`` is supplied it will default to ``NA``. Upper or
+        lower case strings can be passed as *path* is not case-sensitive.'''
 
         if region is not None:
             region = unicode(region).lower()
 
             if region not in self._regions:
-                raise InvalidRegion(region)
+                raise APIInvalidRegion(region)
         else:
             region = self._regions[0]
 
