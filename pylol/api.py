@@ -33,7 +33,7 @@ class Api(object):
         region -- Which region to query
         '''
 
-        if region not None:
+        if region is not None:
             region = unicode(region).lower()
 
             if region not in self._regions:
@@ -135,8 +135,8 @@ class Api(object):
 
         # Convert createDate into a proper unix timestamp
         for k, g in enumerate(ret['gameStatistics']):
-            ts = int(re.sub(r'[^0-9]+', '', g['createDate']))
-            ret['gameStatistics'][k]['createDate'] = ts / 1000.0
+            ts = float(re.sub(r'[^0-9]+', '', g['createDate']))
+            ret['gameStatistics'][k]['createDate'] = ts / 1000
 
         return ret
 
@@ -173,7 +173,7 @@ class Api(object):
         region -- Which region to search in.
         '''
 
-        if season not None:
+        if season is not None:
             path = 'ranked_stats/%d/%s' % (aid, season)
         else:
             path = 'ranked_stats/%d' % aid
@@ -195,7 +195,7 @@ class Api(object):
         except APIFailure as e:
             if re.search(r'^No teams found for summoner [0-9]+\.$', e.message):
                 raise APISummonerNotInTeams(sid, region)
-            else if re.search(r'^No summoner found with summonerId [0-9]+\.$',
+            elif re.search(r'^No summoner found with summonerId [0-9]+\.$',
                               e.message):
                 raise APISummonerIDNotFound(sid, region)
             else:
@@ -220,7 +220,7 @@ class Api(object):
             if re.search(r'^Summoner .+ was not found in the system!$',
                          e.message):
                 raise APISummonerNotFound(name, region)
-            else if re.search(r'^No Game for player .+ was found in the\
+            elif re.search(r'^No Game for player .+ was found in the\
             system!$', e.message):
                 raise APISummonerNotFound(name, region)
             else:
