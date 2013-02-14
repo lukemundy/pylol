@@ -71,128 +71,6 @@
 <p>If you do not yet have a developer key to access the API you can
 request a new one from <a class="reference external" href="http://elophant.com/developers/new">http://elophant.com/developers/new</a>.</p>
 <dl class="method">
-<dt id="pylol.api.Api.get_champions">
-<tt class="descname">get_champions</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_champions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_champions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the name and ID of all champions</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_find_team">
-<tt class="descname">get_find_team</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_find_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_find_team" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns information on the requested team</p>
-<p>Arguments:
-name &#8211; Name or tag of the team to search for.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_in_progress_game_info">
-<tt class="descname">get_in_progress_game_info</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_in_progress_game_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_in_progress_game_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns player info, picks, bans and observer info for the game
-the specified summoner is currently in (if any).</p>
-<p>Arguments:
-name &#8211; Name of the summoner to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_items">
-<tt class="descname">get_items</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_items" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns data on all in game items</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_leagues">
-<tt class="descname">get_leagues</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_leagues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_leagues" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns information on each league the summoner is currently in</p>
-<p>Arguments:
-sid &#8211; ID of the summoner to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_mastery_pages">
-<tt class="descname">get_mastery_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_mastery_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_mastery_pages" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all of a Summoner&#8217;s mastery pages</p>
-<p>Arguments:
-sid &#8211; ID of the summoner to look up (returned from get_summoner()).
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_ranked_stats">
-<tt class="descname">get_ranked_stats</tt><big>(</big><em>aid</em>, <em>season=None</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_ranked_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_ranked_stats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all information and stats from a Summoner&#8217;s last 10 games</p>
-<p>Arguments:
-aid &#8211; Account ID (not summoner ID) of the summoner to look up.
-season &#8211; Which season to get stats for (&#8216;one&#8217;, &#8216;two&#8217; or &#8216;current&#8217;)
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_recent_games">
-<tt class="descname">get_recent_games</tt><big>(</big><em>aid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_recent_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_recent_games" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all information and stats from a Summoner&#8217;s last 10 games</p>
-<p>Arguments:
-aid &#8211; Account ID (not summoner ID) of the summoner to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_rune_pages">
-<tt class="descname">get_rune_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_rune_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_rune_pages" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns all of a Summoner&#8217;s rune pages</p>
-<p>Arguments:
-sid &#8211; ID of the summoner to look up (returned from get_summoner()).
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_summoner">
-<tt class="descname">get_summoner</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns name, icon, ID and level of the specified summoner</p>
-<p>Arguments:
-name &#8211; Display name of the summoner to look for.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_summoner_names">
-<tt class="descname">get_summoner_names</tt><big>(</big><em>sids</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the names of each summoner</p>
-<p>Arguments:
-sids &#8211; A list of summoner IDs to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_summoner_team_info">
-<tt class="descname">get_summoner_team_info</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_team_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_team_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns information on each team the summoner is currently in</p>
-<p>Arguments:
-sid &#8211; ID of the summoner to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_team">
-<tt class="descname">get_team</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns information on the requested team</p>
-<p>Arguments:
-tid &#8211; teamId of the team to look up.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pylol.api.Api.get_team_end_of_game_stats">
-<tt class="descname">get_team_end_of_game_stats</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team_end_of_game_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team_end_of_game_stats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns stats of each player in the specified team</p>
-<p>Arguments:
-tid &#8211; Team ID of the team to return stats for.
-region &#8211; Which region to search in.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="pylol.api.Api.request">
 <tt class="descname">request</tt><big>(</big><em>path</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request to the Elophant API.</p>
@@ -206,7 +84,7 @@ region &#8211; Which region to search in.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict containing the decoded JSON returned from the API.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the decoded JSON data.</p>
 </td>
 </tr>
 </tbody>
@@ -219,6 +97,374 @@ request is made, so you should not include them if you can avoid it.</p>
 West, <tt class="docutils literal"><span class="pre">EUNE</span></tt> for Europe North East and <tt class="docutils literal"><span class="pre">BR</span></tt> for Brazil. If <em>region</em>
 is omitted or <tt class="docutils literal"><span class="pre">None</span></tt> is supplied it will default to <tt class="docutils literal"><span class="pre">NA</span></tt>. Upper or
 lower case strings can be passed as <em>path</em> is not case-sensitive.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_items">
+<tt class="descname">get_items</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data on each item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of dictionaries.</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/items">http://elophant.com/developers/docs/items</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_champions">
+<tt class="descname">get_champions</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_champions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_champions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a mapping of champion IDs to names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of dictionaries.</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/champions">http://elophant.com/developers/docs/champions</a> for more
+information</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner">
+<tt class="descname">get_summoner</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns some basic information on a summoner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The summoner name to search for.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the summoner data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/summoner">http://elophant.com/developers/docs/summoner</a> for more
+information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">revisionDate</span></tt> field returned from the API will be converted
+into a proper unix timestamp.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_mastery_pages">
+<tt class="descname">get_mastery_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_mastery_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_mastery_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns each of a Summoner&#8217;s current mastery pages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">summonerId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing info on the mastery pages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/mastery_pages">http://elophant.com/developers/docs/mastery_pages</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_rune_pages">
+<tt class="descname">get_rune_pages</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_rune_pages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_rune_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns each of a Summoner&#8217;s current rune pages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">summonerId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing info on the rune pages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/rune_pages">http://elophant.com/developers/docs/rune_pages</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_recent_games">
+<tt class="descname">get_recent_games</tt><big>(</big><em>aid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_recent_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_recent_games" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information and game stats from up to 10 of the Summoner&#8217;s
+most recent games.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">accountId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the game data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If there are no recent games played by the summoner, an empty
+dictionary will be returned instead.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure that <em>aid</em> contains the <tt class="docutils literal"><span class="pre">accountId</span></tt> of the summoner and
+not their <tt class="docutils literal"><span class="pre">summonerId</span></tt> that is used by most other Api functions.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">createDate</span></tt> field in each game&#8217;s <tt class="docutils literal"><span class="pre">gameStatistics</span></tt> will be
+converted into a proper unix timestamp.</p>
+</div>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/recent_games">http://elophant.com/developers/docs/recent_games</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner_names">
+<tt class="descname">get_summoner_names</tt><big>(</big><em>sids</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps the supplied summoner IDs to their associated summoner names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sids</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of summoner IDs.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list containing the summoner names in the same order the
+summoner IDs were provided.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/summoner_names">http://elophant.com/developers/docs/summoner_names</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_leagues">
+<tt class="descname">get_leagues</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_leagues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_leagues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on each league the summoner is currently in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">summonerId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of dictionaries containing info on each league.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/leagues">http://elophant.com/developers/docs/leagues</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_ranked_stats">
+<tt class="descname">get_ranked_stats</tt><big>(</big><em>aid</em>, <em>season='current'</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_ranked_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_ranked_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all ranked stats for the specified summoner and season.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>aid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">accountId</span></tt>.</li>
+<li><strong>season</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which season to get stats for.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the stats.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure that <em>aid</em> contains the <tt class="docutils literal"><span class="pre">accountId</span></tt> of the summoner and
+not their <tt class="docutils literal"><span class="pre">summonerId</span></tt> that is used by most other Api functions.</p>
+</div>
+<p>The optional parameter <em>season</em> should be one of <tt class="docutils literal"><span class="pre">'one'</span></tt>, <tt class="docutils literal"><span class="pre">'two'</span></tt>
+or <tt class="docutils literal"><span class="pre">'current'</span></tt> (the default).</p>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/ranked_stats">http://elophant.com/developers/docs/ranked_stats</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_summoner_team_info">
+<tt class="descname">get_summoner_team_info</tt><big>(</big><em>sid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_summoner_team_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_summoner_team_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on each team the summoner is currently in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The summoner&#8217;s <tt class="docutils literal"><span class="pre">summonerId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the team information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If the summoner is not a member of any teams, an empty dictionary will
+be returned instead.</p>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/summoner_team_info">http://elophant.com/developers/docs/summoner_team_info</a> for
+more information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_in_progress_game_info">
+<tt class="descname">get_in_progress_game_info</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_in_progress_game_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_in_progress_game_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns player info, picks, bans and observer info for the game
+the specified summoner is currently in (if any).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The summoner name to search for.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the game information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If the summoner is not currently in a game, an empty dictionary will
+be returned instead.</p>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/in_progress_game_info">http://elophant.com/developers/docs/in_progress_game_info</a> for
+more information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_team">
+<tt class="descname">get_team</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns information on the requested team.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The team&#8217;s <tt class="docutils literal"><span class="pre">teamId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing all info on the requested team.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/team">http://elophant.com/developers/docs/team</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_find_team">
+<tt class="descname">get_find_team</tt><big>(</big><em>name</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_find_team"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_find_team" title="Permalink to this definition">¶</a></dt>
+<dd><p>Funtionally identical to get_team() but will search on team name or
+tag instead of ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A team&#8217;s tag or name.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">If a matching team is found, a dictionary containing all info
+on the requested team.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Elophant asks that this method be used sparingly and only if the
+<tt class="docutils literal"><span class="pre">teamId</span></tt> of a team is not known.</p>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/find_team">http://elophant.com/developers/docs/find_team</a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_team_end_of_game_stats">
+<tt class="descname">get_team_end_of_game_stats</tt><big>(</big><em>tid</em>, <em>gid</em>, <em>region=None</em><big>)</big><a class="reference internal" href="_modules/pylol/api.html#Api.get_team_end_of_game_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pylol.api.Api.get_team_end_of_game_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns very detailed statistics about the requested ranked match.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The team&#8217;s <tt class="docutils literal"><span class="pre">teamId</span></tt>.</li>
+<li><strong>gid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The <tt class="docutils literal"><span class="pre">gameId</span></tt> to look up.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the match statistics.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/team_end_of_game_stats">http://elophant.com/developers/docs/team_end_of_game_stats</a> for
+more information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pylol.api.Api.get_team_ranked_stats">
+<tt class="descname">get_team_ranked_stats</tt><big>(</big><em>tid</em>, <em>region=None</em><big>)</big><a class="headerlink" href="#pylol.api.Api.get_team_ranked_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stats of each player in the specified team.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tid</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The team&#8217;s <tt class="docutils literal"><span class="pre">teamId</span></tt>.</li>
+<li><strong>region</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Which game region to search in.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary containing the stats for each team member.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to <a class="reference external" href="http://elophant.com/developers/docs/team_ranked_stats">http://elophant.com/developers/docs/team_ranked_stats</a> for
+more information.</p>
 </dd></dl>
 
 </dd></dl>

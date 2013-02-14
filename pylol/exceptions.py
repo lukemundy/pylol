@@ -35,15 +35,6 @@ class APISummonerIDNotFound(PylolException):
         self.sid = sid
         self.region = region
 
-class APISummonerNotInTeams(PylolException):
-    '''Thrown when requesting team info on a summoner that isn't part of any
-    teams'''
-
-    def __init__(self, sid, region):
-        self.msg = u'Summoner %d is not a member of any teams.' % sid
-        self.sid = sid
-        self.region = region
-
 class APIInvalidRegion(PylolException):
     '''Thrown when an invalid region is specified during an API query'''
 
