@@ -1,4 +1,5 @@
 # encoding: utf8
+import urllib
 import urllib2
 import re
 import simplejson as json
@@ -13,7 +14,8 @@ class APIExceededRequestLimit(Exception):
 class APIFailure(Exception):
     '''Thrown when an API request returns success = false'''
 
-    def __init__(self, msg, path, url):
+    def __init__(self, eid, msg, path, url):
+        self.eid = eid
         self.msg = msg
         self.path = path
         self.url = url
@@ -77,7 +79,7 @@ class Api(object):
             'X-Mashape-Authorization' : self.key
         })
 
-        if headers not None:
+        if headers is not None:
             for key, val in headers.items():
                 req.add_header(key, val)
 
@@ -88,10 +90,11 @@ class Api(object):
         except json.JSONDecodeError as e:
             raise APIInvalidData(e.doc)
 
-        self.num_requests += 1;
-        #self.num_remainreq = rsp.info().getheader('X-Api-Calls-Remaining')
-
-        return data['data']
+        if data['success'] is False:
+            raise APIFailure(data['eid'], data['error_message'], path, url)
+        else:
+            self.num_requests += 1;
+            return data['data']
 
     def validate_region(self, region):
         '''Checks that the supplied region is valid

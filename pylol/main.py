@@ -2,7 +2,8 @@
 import sys
 import argparse
 
-from .config import default_uri
+import config
+
 from .api import Api
 from .db import db_connect
 
@@ -11,13 +12,17 @@ def init():
 
     args = get_args()
     api = Api(args.key)
-    db, meta, session = db_connect(default_uri)
-
-    meta.create_all()
+    db, meta, session = db_connect(args.db, True)
 
 def update():
     '''Update the database with fresh data from the API'''
-    pass
+
+    args = get_args()
+    api = Api(args.key)
+    db, meta, session = db_connect(args.db)
+
+    print api
+
 
 ### Helper functions
 
@@ -33,10 +38,11 @@ def get_args():
                     'console output.')
     ap.add_argument('-v', '--version', action='store_true', help='Print the '
                     'current Pylol version and exit.')
-    ap.add_argument('-d', '--db', metavar='URI', help='Use the database '
-                    'specified by URI instead of the internal PyLoL db.')
-    ap.add_argument('-k', '--key', metavar='KEY', help='The Elophant API '
-                    'key to use.')
+    ap.add_argument('-d', '--db', metavar='URI', default=config.default_uri,
+                    help='Use the database specified by URI instead of the '
+                    'internal PyLoL db.')
+    ap.add_argument('-k', '--key', metavar='KEY', default=config.default_key,
+                    help='A valid API key.')
 
     args = ap.parse_args()
 

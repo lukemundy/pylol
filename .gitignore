@@ -1,2 +1,3 @@
 *.pyc
+pylol/data/database.sqlite
 doc/_build/doctrees
