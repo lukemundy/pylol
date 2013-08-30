@@ -30,8 +30,8 @@ def get_args():
     '''Creates an argparse object and the standard global options.'''
 
     ap = argparse.ArgumentParser(description='Interact with data from the '
-        'Elophant API for League of Legends.', epilog='Written by Luke Mundy '
-        '<lmundy@gmail.com> http://epicboak.com/'
+        'Mashape League of Legends API.', epilog='Written by Luke Mundy '
+        '<lmundy@gmail.com>'
     )
 
     ap.add_argument('-q', '--quiet', action='store_true', help='Supresses all '
