@@ -8,6 +8,7 @@ setup(
     url             = 'lmundy.com',
     description     = 'A module for accessing data from the Elophant API',
     packages        = find_packages(),
+    package_data    = { 'pylol': ['data/*.sqlite'] },
 
     install_requires = [
         'SQLAlchemy>=0.7',
@@ -16,7 +17,9 @@ setup(
 
     entry_points = {
         'console_scripts': [
-            'pylol = pylol.main:main',
+            'pylol-init = pylol.main:init',
+            'pylol-update = pylol.main:update',
+            'pylol-report = pylol.main:report'
         ],
     },
 )
