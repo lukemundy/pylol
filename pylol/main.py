@@ -21,7 +21,7 @@ def update():
     api = Api(args.key)
     db, meta, session = db_connect(args.db)
 
-    print api
+    print api.get_items()
 
 
 ### Helper functions

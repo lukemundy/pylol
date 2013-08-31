@@ -90,11 +90,12 @@ class Api(object):
         except json.JSONDecodeError as e:
             raise APIInvalidData(e.doc)
 
-        if data['success'] is False:
-            raise APIFailure(data['eid'], data['error_message'], path, url)
-        else:
-            self.num_requests += 1;
-            return data['data']
+        #if data['success'] is False:
+        #    raise APIFailure(data['eid'], data['error_message'], path, url)
+        #else:
+        #    self.num_requests += 1;
+
+        return data
 
     def validate_region(self, region):
         '''Checks that the supplied region is valid

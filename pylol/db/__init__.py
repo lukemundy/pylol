@@ -28,7 +28,7 @@ def db_connect(uri, init=False):
     session = Session()
 
     if init:
-        db_init(meta)
+        db_init(db, meta, session)
     else:
         # Load the Pylol table, if its not there chances are this is a fresh DB
         try: pylol = Table('pylol', meta, autoload=True)
@@ -52,7 +52,7 @@ def db_connect(uri, init=False):
 
     return (db, meta, session)
 
-def db_init( meta):
+def db_init(db, meta, session):
     '''Initializes a fresh database'''
 
     pylol = Table('pylol', meta,
@@ -67,7 +67,8 @@ def db_init( meta):
         Column('name', String(30)),
         Column('internalName', String(30)),
         Column('level', Integer),
-        Column('icon', Integer)
+        Column('icon', Integer),
+        Column('lastUpdate', Integer)
     )
 
     games = Table('games', meta,
@@ -79,7 +80,7 @@ def db_init( meta):
         Column('afk', Boolean),
         Column('boostIpEarned', Integer),
         Column('boostXpEarned', Integer),
-        Column('championId', Integer),
+        Column('championId', Integer, ForeignKey('champions.key')),
         Column('createDate', Integer),
         Column('dataVersion', Integer),
         Column('difficulty', Integer),
@@ -89,9 +90,9 @@ def db_init( meta):
         Column('experienceEarned', Integer),
         Column('futureData', String(50)),
         Column('gameMapId', Integer),
-        Column('gameMode', Integer),
-        Column('gameType', Integer),
-        Column('gameTypeEnum', Integer),
+        Column('gameMode', String(30)),
+        Column('gameType', String(30)),
+        Column('gameTypeEnum', String(30)),
         Column('id', Integer),
         Column('invalid', Boolean),
         Column('ipEarned', Integer),
@@ -217,6 +218,17 @@ def db_init( meta):
         Column('attackspeedperlevel', Integer)
     )
 
+    groups = Table('groups', meta,
+        Column('id', Integer, primary_key=True),
+        Column('name', String(30))
+    )
+
+    group_mem = Table('group_mem', meta,
+        Column('groupId', Integer, ForeignKey('groups.id'), primary_key=True),
+        Column('summonerId', Integer, ForeignKey('summoners.summonerId'),
+               primary_key=True)
+    )
+
     meta.create_all()
 
     mapper(Pylol, pylol)
@@ -225,3 +237,6 @@ def db_init( meta):
     mapper(Player, players)
     mapper(Stat, stats)
     mapper(Champion, champions)
+
+    session.add(Pylol('last_champ_update', 0))
+    session.commit()
