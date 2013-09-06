@@ -42,7 +42,7 @@ INSERT INTO games (
     "boostXpEarned", "championId", "createDate", "dataVersion", "difficulty",
     "difficultyString", "eligibleFirstWinOfDay", "eloChange",
     "experienceEarned", "futureData", "gameMapId", "gameMode", "gameType",
-    "gameTypeEnum", "id", "invalid", "ipEarned", "KCoefficient", "leaver",
+    "gameTypeEnum", "invalid", "ipEarned", "KCoefficient", "leaver",
     "level", "predictedWinPct", "premadeSize", "premadeTeam", "queueType",
     "ranked", "rating", "rawStatsJson", "skinIndex", "skinName", "spell1",
     "spell2", "subType", "summonerId", "teamId", "teamRating", "timeInQueue",
@@ -52,10 +52,9 @@ SELECT
     "gameId", "userId", 'NA', 0, "afk", "boostIpEarned", "boostXpEarned",
     "championId", "createDate", 0, null, null, "eligibleFirstWinOfDay", 0,
     "experienceEarned", null, "gameMapId", "gameMode", "gameType", "gameType",
-    null, false, "ipEarned", 0, "leaver", "level", 0, "premadeSize",
-    "premadeTeam", "queueType", "ranked", 0, null, "skinIndex", null, "spell1",
-    "spell2", "subType", "summonerId", "teamId", 0, "timeInQueue",
-    "userServerPing"
+    false, "ipEarned", 0, "leaver", "level", 0, "premadeSize", "premadeTeam",
+    "queueType", "ranked", 0, null, "skinIndex", null, "spell1", "spell2",
+    "subType", "summonerId", "teamId", 0, "timeInQueue", "userServerPing"
 FROM games_old;
 
 --
@@ -162,12 +161,11 @@ SELECT
     g."dataVersion" AS "dataVersion_game", g."difficulty", g."difficultyString",
     g."eligibleFirstWinOfDay", g."eloChange", g."experienceEarned",
     g."futureData", g."gameMapId", g."gameMode", g."gameType",
-    g."gameTypeEnum", g."id", g."invalid", g."ipEarned", g."KCoefficient",
-    g."leaver", g."predictedWinPct", g."premadeSize", g."premadeTeam",
-    g."queueType", g."ranked", g."rating", g."rawStatsJson", g."skinIndex",
-    g."skinName", g."spell1", g."spell2", g."subType", g."teamId",
-    g."teamRating", g."timeInQueue",
-    g."userServerPing",
+    g."gameTypeEnum", g."invalid", g."ipEarned", g."KCoefficient", g."leaver",
+    g."predictedWinPct", g."premadeSize", g."premadeTeam", g."queueType",
+    g."ranked", g."rating", g."rawStatsJson", g."skinIndex", g."skinName",
+    g."spell1", g."spell2", g."subType", g."teamId", g."teamRating",
+    g."timeInQueue", g."userServerPing",
     -- Stats Table
     st."dataVersion" AS "dataVersion_stat", st."ASSISTS", st."BARRACKS_KILLED",
     st."CHAMPIONS_KILLED", st."GOLD_EARNED", st."ITEM0", st."ITEM1",

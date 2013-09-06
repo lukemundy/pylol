@@ -68,8 +68,8 @@ class Summoner(Base):
         self.region = region
         self.update_values(data)
 
-    summonerId = Column(Integer, primary_key=True)
-    accountId = Column(Integer, unique=True)
+    summonerId = Column(BigInteger, primary_key=True)
+    accountId = Column(BigInteger, unique=True)
     region = Column(String(3))
     name = Column(String(30), index=True)
     internalName = Column(String(30))
@@ -89,8 +89,8 @@ class Game(Base):
         self.region = region
         self.update_values(data)
 
-    gameId = Column(Integer, primary_key=True)
-    userId = Column(Integer, ForeignKey('summoners.accountId'),primary_key=True)
+    gameId = Column(BigInteger, primary_key=True)
+    userId = Column(BigInteger, ForeignKey('summoners.accountId'),primary_key=True)
     region = Column(String(3))
     adjustedRating = Column(Integer)
     afk = Column(Boolean)
@@ -109,7 +109,6 @@ class Game(Base):
     gameMode = Column(String(30))
     gameType = Column(String(30))
     gameTypeEnum = Column(String(30))
-    id = Column(String(20))
     invalid = Column(Boolean)
     ipEarned = Column(Integer)
     KCoefficient = Column(Integer)
@@ -127,7 +126,7 @@ class Game(Base):
     spell1 = Column(Integer)
     spell2 = Column(Integer)
     subType = Column(String(30))
-    summonerId = Column(Integer)
+    summonerId = Column(BigInteger)
     teamId = Column(Integer)
     teamRating = Column(Integer)
     timeInQueue = Column(Integer)
@@ -147,8 +146,8 @@ class Stat(Base):
         self.WIN = bool(self.WIN)
         self.LOSE = bool(self.LOSE)
 
-    gameId = Column(Integer, primary_key=True)
-    userId = Column(Integer, primary_key=True)
+    gameId = Column(BigInteger, primary_key=True)
+    userId = Column(BigInteger, primary_key=True)
     dataVersion = Column(Integer)
     ASSISTS = Column(Integer)
     BARRACKS_KILLED = Column(Integer)
@@ -269,8 +268,8 @@ class Player(Base):
         self.gameId = gameId
         self.update_values(data)
 
-    gameId = Column(Integer, primary_key=True)
-    summonerId = Column(Integer, primary_key=True)
+    gameId = Column(BigInteger, primary_key=True)
+    summonerId = Column(BigInteger, primary_key=True)
     championId = Column(Integer)
     teamId = Column(Integer)
     dataVersion = Column(Integer)
