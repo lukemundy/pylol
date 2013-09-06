@@ -1,4 +1,4 @@
-# encoding: utf8
+# coding: utf8
 import urllib
 import urllib2
 import re
@@ -26,6 +26,13 @@ class APIInvalidData(Exception):
     def __init__(self, data):
         self.msg = u'API returned invalid JSON data.'
         self.data = data
+
+class APIInvalidRegion(Exception):
+    '''Thrown when a request is made to an invalid region'''
+
+    def __init__(self, region):
+        self.msg = u'Invalid region %s specified.' % region
+        self.region = region
 
 class Api(object):
     '''A wrapper class for pulling data from the `League of Legends Mashape API
