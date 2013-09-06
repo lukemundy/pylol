@@ -1,28 +1,89 @@
 # encoding: utf-8
 import sys
 import argparse
+import pytz
+import dateutil.parser
+from time import time
+from datetime import datetime
 
 import config
 
 from .api import Api
 from .db import db_connect
+from .db.tables import *
+
+from sqlalchemy.orm.exc import NoResultFound
 
 def init():
     '''Initialises the PyLoL database by creating all required tables'''
 
     args = get_args()
-    api = Api(args.key)
-    db, meta, session = db_connect(args.db, True)
+    engine, session = db_connect(args.db)
+
+    metadata.create_all(engine)
 
 def update():
     '''Update the database with fresh data from the API'''
 
     args = get_args()
     api = Api(args.key)
-    db, meta, session = db_connect(args.db)
 
-    print api.get_items()
+    print 'Connecting to database'
+    engine, session = db_connect(args.db)
 
+    q = session.query(Summoner).join(GroupMem, Group)
+
+    if args.group is not 'all':
+        q = q.filter(Group.internalName == args.group)
+
+    for s in q.all():
+        print 'Starting update of %s.%s' % (s.name, s.region)
+
+        session.begin(subtransactions=True)
+
+        print 'Fetching match history'
+        summoner, games = api.get_match_history(s.name, s.region)
+
+        summoner['lastUpdate'] = int(time())
+
+        print 'Adding %d matches to database' % len(games['gameStatistics']['array'])
+
+        for g in games['gameStatistics']['array']:
+            print 'gameId: %s, userId: %s' % (g['gameId'], g['userId'])
+
+            # Convert the date string in createDate into a unix timestamp
+            g['createDate'] = datestr2unix(g['createDate'])
+
+            # Check if game is already in database
+            try:
+                session.query(Game)\
+                .filter_by(gameId = g['gameId'], userId = g['userId'])\
+                .one()
+            except NoResultFound:
+                session.add(Game(s.region, g))
+                session.commit()
+
+                session.add(Stat(g['gameId'], g['userId'], g['statistics']['array']))
+                session.commit()
+
+                # Add players from this game
+                for p in g['fellowPlayers']['array']:
+                    try:
+                        session.query(Player)\
+                        .filter_by(gameId=g['gameId'],
+                                   summonerId=p['summonerId'])\
+                        .one()
+                    except NoResultFound:
+                        session.add(Player(g['gameId'], p))
+                        session.commit()
+
+                print 'done'
+            else:
+                print 'Skipping...'
+
+        print 'Finished updating %s.%s' % (s.name, s.region)
+
+    print 'Total API requests: %d' % api.num_requests
 
 ### Helper functions
 
@@ -43,13 +104,30 @@ def get_args():
                     'internal PyLoL db.')
     ap.add_argument('-k', '--key', metavar='KEY', default=config.default_key,
                     help='A valid API key.')
+    ap.add_argument('group', metavar='GROUP', nargs='?', default='all',
+                    help='Which group of summoners to update.')
 
     args = ap.parse_args()
 
     if args.version:
         import pkg_resources
 
-        print 'PyLoL', pkg_resources.require('Pylol')[0].version
-        sys.exit
+        print 'PyLoL v%s by Epic Boak <http://epicftw.com/>' % \
+            pkg_resources.require('Pylol')[0].version
+        sys.exit()
 
     return args
+
+def datestr2unix(dstr):
+    '''Converts a PST/PDT date string from the API into a UTC Unix timestamp.'''
+
+    tz = dstr[-3:]
+
+    if tz == 'PST':
+        dstr = dstr[:-3] + '-0800'
+    elif tz == 'PDT':
+        dstr = dstr[:-3] + '-0700'
+    else:
+        raise Exception('Invalid timezone "%s" in date string "%s".' % (tz, dstr))
+
+    return int(dateutil.parser.parse(dstr).astimezone(pytz.utc).strftime('%s'))

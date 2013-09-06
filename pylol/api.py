@@ -37,7 +37,7 @@ class Api(object):
     num_remainreq = -1  # Number of requests remaining today
 
     # Private vars
-    _url     = 'https://teemojson.p.mashape.com/'  # Full URL to the API
+    _url     = 'https://bandlecity88c99ea3.p.mashape.com/' # Full URL to the API
     _regions = ('na', 'br', 'euw', 'eun', 'ru', 'tr', 'las', 'lan', 'oc')
 
     def __init__(self, key):
@@ -90,10 +90,10 @@ class Api(object):
         except json.JSONDecodeError as e:
             raise APIInvalidData(e.doc)
 
-        #if data['success'] is False:
-        #    raise APIFailure(data['eid'], data['error_message'], path, url)
-        #else:
-        #    self.num_requests += 1;
+        if data['success'] is False:
+           raise APIFailure(data['eid'], data['error_message'], path, url)
+        else:
+           self.num_requests += 1;
 
         return data
 
@@ -186,8 +186,9 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Service-free-week
         for more information.'''
 
-        return self.request('service-state/%s/free-week' %
-                            self.validate_region(region))
+        region = self.validate_region(region)
+
+        return self.request('service-state/%s/free-week' % region)
 
     def get_queue_info(self, region):
         '''Returns a dictionary containing information on the matchmaking
@@ -201,8 +202,9 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Service-matchmaking-status-detailed-
         for more information.'''
 
-        return self.request('service-state/%s/matchmaking-queues' %
-                            self.validate_region(region))
+        region = self.validate_region(region)
+
+        return self.request('service-state/%s/matchmaking-queues' % region)
 
     def get_summoner(self, name, region):
         '''Returns some basic information on a summoner.
@@ -218,8 +220,12 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-basic-information
         for more information.'''
 
-        return self.request('player/%s/%s' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        data = self.request('player/%s/%s' % (region, name))['data']
+
+        return data
 
     def get_summoner_honor(self, name, region):
         '''Returns the amount of honor a summoner has earned.
@@ -235,8 +241,10 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-honor-commendations
         for more information.'''
 
-        return self.request('player/%s/%s/honor' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        return self.request('player/%s/%s/honor' % (region, name))
 
     def get_ingame_info(self, name, region):
         '''Returns information about the current game the supplied summoner is
@@ -253,8 +261,10 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-ingame-status-and-spectate
         for more information.'''
 
-        return self.request('player/%s/%s/ingame' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        return self.request('player/%s/%s/ingame' % (region, name))
 
     def get_summoner_lifetimeip(self, name, region):
         '''Returns the amount of Influence Points a summoner has earned.
@@ -270,8 +280,10 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-lifetime-influence-points
         for more information.'''
 
-        return self.request('player/%s/%s/influence_points' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        return self.request('player/%s/%s/influence_points' % (region, name))
 
     def get_masteries(self, name, region):
         '''Returns information on each of the summoner's mastery pages.
@@ -287,8 +299,10 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-masteries
         for more information.'''
 
-        return self.request('player/%s/%s/mastery' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        return self.request('player/%s/%s/mastery' % (region, name))
 
     def get_current_masteries(self, name, region):
         '''Returns information on the summoner's active mastery page.
@@ -304,8 +318,10 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-masteries
         for more information.'''
 
-        return self.request('player/%s/%s/mastery' %
-                            (self.validate_region(region), urllib.quote(name)),
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        return self.request('player/%s/%s/mastery' % (region, name),
                             {'X-Options' : 'SingleEntity'})
 
     def get_match_history(self, name, region):
@@ -317,11 +333,15 @@ class Api(object):
         :type region: string
         :param region: Which game region to search in.
 
-        :returns: A dictionary containing the summoner data.
+        :returns: Two dictionaries.
 
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Summoner-match-history
         for more information.'''
 
-        return self.request('player/%s/%s/recent_games' %
-                            (self.validate_region(region), urllib.quote(name)))
+        name = urllib.quote(name)
+        region = self.validate_region(region)
+
+        req = self.request('player/%s/%s/recent_games' % (region, name))
+
+        return req['player'], req['data']
 

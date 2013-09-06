@@ -11,8 +11,10 @@ setup(
     package_data    = { 'pylol': ['data/*.sqlite'] },
 
     install_requires = [
-        'SQLAlchemy>=0.7',
-        'simplejson>=2.2.1'
+        'SQLAlchemy>=0.8',
+        'simplejson>=2.2.1',
+        'pytz',
+        'python-dateutil'
     ],
 
     entry_points = {
