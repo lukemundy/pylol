@@ -2,3 +2,4 @@
 pylol/data/database.sqlite
 pylol/config.py
 doc/_build/doctrees
+PyLoL.egg-info/
