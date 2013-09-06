@@ -37,6 +37,11 @@ def update():
         q = q.filter(Group.internalName == args.group)
 
     for s in q.all():
+        if s.lastUpdate > (time() - 1800):
+            print '%s.%s has been recently updated, skipping.' % (s.name, s.region)
+
+            continue
+
         print 'Starting update of %s.%s' % (s.name, s.region)
 
         session.begin(subtransactions=True)
@@ -45,6 +50,8 @@ def update():
         summoner, games = api.get_match_history(s.name, s.region)
 
         summoner['lastUpdate'] = int(time())
+        s.update_values(summoner)
+        session.commit()
 
         print 'Adding %d matches to database' % len(games['gameStatistics']['array'])
 
