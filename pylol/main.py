@@ -1,6 +1,7 @@
 # encoding: utf-8
 import sys
 import argparse
+import random
 import pytz
 import dateutil.parser
 from time import time
@@ -31,17 +32,21 @@ def update():
     print 'Connecting to database'
     engine, session = db_connect(args.db)
 
-    q = session.query(Summoner).join(GroupMem, Group)
+    q = session.query(Summoner)\
+        .join(GroupMem, Group)\
+        .filter(Summoner.lastUpdate < (time() - 1800))
 
     if args.group is not 'all':
         q = q.filter(Group.internalName == args.group)
 
-    for s in q.all():
-        if s.lastUpdate > (time() - 1800):
-            print '%s.%s has been recently updated, skipping.' % (s.name, s.region)
+    summoners = q.all()
 
-            continue
+    print '%d summoners to update' % len(summoners)
 
+    # Shuffle the summoners so they aren't always updated in the same order
+    random.shuffle(summoners)
+
+    for s in summoners:
         print 'Starting update of %s.%s' % (s.name, s.region)
 
         session.begin(subtransactions=True)
