@@ -99,7 +99,7 @@ class Game(Base):
     championId = Column(Integer, ForeignKey('champions.key'))
     createDate = Column(Integer)
     dataVersion = Column(Integer)
-    difficulty = Column(Integer)
+    difficulty = Column(String(20))
     difficultyString = Column(String(20))
     eligibleFirstWinOfDay = Column(Boolean)
     eloChange = Column(Integer)
