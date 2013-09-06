@@ -1,3 +1,4 @@
 *.pyc
 pylol/data/database.sqlite
+pylol/config.py
 doc/_build/doctrees
