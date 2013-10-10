@@ -203,7 +203,7 @@ class Champion(Base):
     __tablename__ = 'champions'
     __singlename__ = 'champion'
 
-    def __init__(self, data):
+    def update_values(self, data):
         self.version = data['version']
         self.id = data['id']
         self.key = data['key']
@@ -213,8 +213,11 @@ class Champion(Base):
         self.partype = data['partype']
         self.tags = ','.join(data['tags'])
 
-        self.update_values(data['info'])
-        self.update_values(data['stats'])
+        for key, value in data['info'].items():
+            setattr(self, key, value)
+
+        for key, value in data['stats'].items():
+            setattr(self, key, value)
 
         for key, value in data['image'].iteritems():
             setattr(self, 'img_%s' % key, value)
@@ -281,7 +284,7 @@ class Group(Base):
     __tablename__ = 'groups'
 
     id = Column(Integer, primary_key=True)
-    internalName = Column(String(30))
+    internalName = Column(String(30), unique=True)
     name = Column(String(30))
 
 class GroupMem(Base):
