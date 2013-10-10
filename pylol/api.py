@@ -97,7 +97,7 @@ class Api(object):
         except json.JSONDecodeError as e:
             raise APIInvalidData(e.doc)
 
-        if data['success'] is False:
+        if data.get('success') is False:
            raise APIFailure(data['eid'], data['error_message'], path, url)
         else:
            self.num_requests += 1;
@@ -138,7 +138,7 @@ class Api(object):
         Refer to https://www.mashape.com/meepo/league-of-legends#!endpoint-Gamedata-Champions
         for more information.'''
 
-        return self.request('datadragon/champion')
+        return self.request('datadragon/champion')['data']
 
     def get_masteries(self):
         '''Returns a dictionary containing information on all masteries and the
