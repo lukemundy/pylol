@@ -4,7 +4,8 @@ import argparse
 import random
 import pytz
 import dateutil.parser
-from time import time
+import urllib2
+from time import time, sleep
 from datetime import datetime
 
 import config
@@ -34,7 +35,7 @@ def update():
 
     q = session.query(Summoner)\
         .join(GroupMem, Group)\
-        .filter(Summoner.lastUpdate < (time() - 1800))
+        .filter(Summoner.lastUpdate < int(time() - 1800))
 
     if args.group is not 'all':
         q = q.filter(Group.internalName == args.group)
@@ -51,20 +52,45 @@ def update():
 
         session.begin(subtransactions=True)
 
-        print 'Fetching match history'
-        summoner, games = api.get_match_history(s.name, s.region)
+        failures = 0
+        wait = 5
 
-        summoner['lastUpdate'] = int(time())
+        while failures < 3:
+            print 'Fetching match history'
+
+            try:
+                summoner, games = api.get_match_history(s.name, s.region)
+            except urllib2.HTTPError, e:
+                print 'HTTP error %s returned, trying again in %s seconds...' % (e.code, wait)
+                sleep(wait)
+
+                failures += 1
+                wait *= 2
+            else:
+                break
+
+        if failures == 3:
+            print 'Too many errors encountered, skipping this summoner.'
+            continue
+
         s.update_values(summoner)
+        s.lastUpdate = int(time())
         session.commit()
 
         print 'Adding %d matches to database' % len(games['gameStatistics']['array'])
 
         for g in games['gameStatistics']['array']:
-            print 'gameId: %s, userId: %s' % (g['gameId'], g['userId'])
-
             # Convert the date string in createDate into a unix timestamp
             g['createDate'] = datestr2unix(g['createDate'])
+
+            # Is this a new champion?
+            try:
+                session.query(Champion)\
+                .filter_by(key = g['championId'])\
+                .one()
+            except NoResultFound:
+                print 'Unknown champion ID encountered (%s), refreshing champions'
+                refresh_champions(api, session)
 
             # Check if game is already in database
             try:
@@ -72,6 +98,7 @@ def update():
                 .filter_by(gameId = g['gameId'], userId = g['userId'])\
                 .one()
             except NoResultFound:
+                print 'Adding gameId: %s, userId: %s' % (g['gameId'], g['userId'])
                 session.add(Game(s.region, g))
                 session.commit()
 
@@ -88,10 +115,8 @@ def update():
                     except NoResultFound:
                         session.add(Player(g['gameId'], p))
                         session.commit()
-
-                print 'done'
             else:
-                print 'Skipping...'
+                print 'Skipping gameId: %s, userId: %s' % (g['gameId'], g['userId'])
 
         print 'Finished updating %s.%s' % (s.name, s.region)
 
@@ -143,3 +168,18 @@ def datestr2unix(dstr):
         raise Exception('Invalid timezone "%s" in date string "%s".' % (tz, dstr))
 
     return int(dateutil.parser.parse(dstr).astimezone(pytz.utc).strftime('%s'))
+
+def refresh_champions(api, s):
+    '''Updates the champion table'''
+
+    for name, data in api.get_champions().items():
+        # Check if champion already exists
+        try:
+            champ = s.query(Champion).filter_by(key = data['key']).one()
+        except NoResultFound:
+            s.add(Champion(data))
+        else:
+            champ.update_values(data)
+
+    s.commit()
+
