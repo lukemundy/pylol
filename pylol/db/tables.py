@@ -65,7 +65,7 @@ class Summoner(Base):
     __tablename__ = 'summoners'
 
     def __init__(self, region, data):
-        self.region = region
+        self.region = region.upper()
         self.update_values(data)
 
     summonerId = Column(BigInteger, primary_key=True)
@@ -291,6 +291,9 @@ class GroupMem(Base):
     '''Maps a summoner to a group.'''
 
     __tablename__ = 'group_mem'
+
+    def __init__(self, gid, sid):
+        self.update_values({'groupId' : gid, 'summonerId' : sid})
 
     groupId = Column(Integer, ForeignKey('groups.id'), primary_key=True)
     summonerId = Column(Integer, ForeignKey('summoners.summonerId'),
