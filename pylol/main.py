@@ -14,6 +14,7 @@ from .api import Api
 from .db import db_connect
 from .db.tables import *
 
+from sqlalchemy import or_
 from sqlalchemy.orm.exc import NoResultFound
 
 def init():
@@ -35,7 +36,10 @@ def update():
 
     q = session.query(Summoner)\
         .join(GroupMem, Group)\
-        .filter(Summoner.lastUpdate < int(time() - 1800))
+        .filter(or_(
+            Summoner.lastUpdate < int(time() - 1800),
+            Summoner.lastUpdate == None
+        ))
 
     if args.group is not 'all':
         q = q.filter(Group.internalName == args.group)
